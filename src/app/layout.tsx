@@ -22,6 +22,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <div className="h-[60vh]"></div>
       </body>
     </html>
   );

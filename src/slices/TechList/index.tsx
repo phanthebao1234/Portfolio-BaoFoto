@@ -20,12 +20,29 @@ export type TechListProps = SliceComponentProps<Content.TechListSlice>;
 const TechList = ({ slice }: TechListProps): JSX.Element => {
   const component = useRef(null)
   useEffect(()=> {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
-          markers: true,
+          trigger: component.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 4,
         }
-      })
+      });
+      tl.fromTo(
+        ".tech-row",
+        {
+          x: (index) => {
+            return index % 2 === 0 ? gsap.utils.random(600, 400) : gsap.utils.random(-600, -400);
+          }
+        },
+        {
+          x: (index) => {
+            return index % 2 === 0 ? gsap.utils.random(-600, -400) : gsap.utils.random(600, 400);
+          },
+          ease: "power1.inOut"
+        }
+      )
     }, component)
     return ()=> ctx.revert() // Clean up
   })
@@ -40,7 +57,7 @@ const TechList = ({ slice }: TechListProps): JSX.Element => {
         <Heading className="mb-8" size="xl" as="h2">{slice.primary.heading}</Heading>
       </Bounded>
       {slice.items.map(({tech_name, tech_color}, index )=> (
-        <div key={index} className="tect-row mb-8 flex items-center justify-center gap-5 text-slate-800" aria-label={tech_name || undefined}>
+        <div key={index} className="tech-row mb-8 flex items-center justify-center gap-5 text-slate-800" aria-label={tech_name || undefined}>
           {Array.from({length: 15}, (_, index) => (
             <React.Fragment key={index}>
               <span className="tech_item text-8xl font-extrabold uppercase tracking-tighter" style={{color: index === 7 && tech_color ? tech_color : 'inherit'}}>
