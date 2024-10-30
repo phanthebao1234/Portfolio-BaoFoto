@@ -2,7 +2,19 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Mollit deserunt eiusmod nostrud sunt mollit fugiat nulla qui aute enim voluptate. Proident aute non nostrud officia."
+						}
+					}
+				]
+			}
+		},
 		"items": []
 	}
 ]

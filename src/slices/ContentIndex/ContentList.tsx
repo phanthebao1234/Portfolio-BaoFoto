@@ -60,10 +60,10 @@ function ContentList({
         };
     }, [currentItem]);
 
-    const urlPrefix = contentType === "Blog" ? "/blog" : "projects";
+    const urlPrefix = contentType === "Blog" ? "/blog" : "project";
 
     useEffect(() => {
-        let ctx = gsap.context(() => {
+        const ctx = gsap.context(() => {
             itemRef.current.forEach((item) => {
                 gsap.fromTo(
                     item,
@@ -130,7 +130,7 @@ function ContentList({
                                 ref={(el) => (itemRef.current[index] = el)}
                             >
                                 <Link
-                                    href={urlPrefix + "/" + item.id}
+                                    href={urlPrefix + "/" + item.uid}
                                     className="flex flex-col justify-between border-t border-t-slate-100 py-10 text-slate-200 md:flex-row"
                                     aria-label={item.data.title}
                                 >

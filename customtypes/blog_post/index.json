@@ -19,13 +19,6 @@
           "placeholder": ""
         }
       },
-      "date": {
-        "type": "Timestamp",
-        "config": {
-          "label": "Date",
-          "placeholder": ""
-        }
-      },
       "hover_image": {
         "type": "Image",
         "config": {
@@ -34,11 +27,21 @@
           "thumbnails": []
         }
       },
+      "date": {
+        "type": "Date",
+        "config": {
+          "label": "Date",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "image_block": {
+              "type": "SharedSlice"
+            },
             "text_block": {
               "type": "SharedSlice"
             }
